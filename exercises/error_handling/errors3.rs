@@ -6,7 +6,7 @@
 
 use std::num::ParseIntError;
 
-fn main() {
+fn main() -> Result<(), ParseIntError> {
     let mut tokens = 100;
     let pretend_user_input = "8";
 
@@ -18,6 +18,7 @@ fn main() {
         tokens -= cost;
         println!("You now have {} tokens.", tokens);
     }
+    Ok(())
 }
 
 pub fn total_cost(item_quantity: &str) -> Result<i32, ParseIntError> {
@@ -27,23 +28,6 @@ pub fn total_cost(item_quantity: &str) -> Result<i32, ParseIntError> {
 
     Ok(qty * cost_per_item + processing_fee)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Since the `?` operator returns an `Err` early if the thing it's trying to
 // do fails, you can only use the `?` operator in functions that have a
